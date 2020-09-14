@@ -29,7 +29,7 @@ public class 删除排序数组中的重复项 {
      * @param nums
      * @return
      */
-    public int removeDuplicates(int[] nums) {
+    public int removeDuplicatesOfficial(int[] nums) {
         if (nums.length == 0) return 0;
         int i = 0;
         for (int j = 1; j < nums.length; j++) {
@@ -39,5 +39,16 @@ public class 删除排序数组中的重复项 {
             }
         }
         return i + 1;
+    }
+
+    public int removeDuplicates(int[] nums) {
+        if(nums.length == 0){return 0;}
+        int i = 0;
+        for (int j = 1; j < nums.length; j++){
+            if(nums[i] != nums[j]){
+                nums[++i] = nums[j];
+            }
+        }
+        return i;
     }
 }
