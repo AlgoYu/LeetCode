@@ -15,13 +15,9 @@ package cn.machine.geek;
 public class 买卖股票的最佳时机II {
     public int maxProfit(int[] prices) {
         int total = 0;
-        A : for (int i = 0; i < prices.length; i++){
-            for (int j = i + 1; j < prices.length; j++){
-                if(prices[j] > prices[i]){
-                    total += prices[j] - prices[i];
-                    i = j;
-                    continue A;
-                }
+        for (int i = 1; i < prices.length; i++){
+            if(prices[i] > prices[i-1]){
+                total += prices[i] - prices[i-1];
             }
         }
         return total;
