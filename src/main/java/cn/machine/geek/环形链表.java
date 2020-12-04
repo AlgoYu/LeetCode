@@ -52,7 +52,7 @@ public class 环形链表 {
         ListNode(int x) {
             next = null;
         }
-     }
+    }
     public boolean hasCycle(ListNode head) {
         if(null == head || null == head.next){
             return false;
