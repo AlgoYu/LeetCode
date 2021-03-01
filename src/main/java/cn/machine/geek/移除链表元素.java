@@ -18,26 +18,17 @@ public class 移除链表元素 {
         }
     }
     public ListNode removeElements(ListNode head, int val) {
-        if(null == head){
-            return null;
-        }
-        while (head.val == val){
-            if(head.next == null){
-                return null;
-            }else{
-                head.val = head.next.val;
-                head.next = head.next.next;
-            }
-        }
-        ListNode temp = head;
+        ListNode virtual = new ListNode(0);
+        virtual.next = head;
+        ListNode temp = virtual;
         while (temp.next != null){
             if(temp.next.val == val){
                 temp.next = temp.next.next;
-                continue;
+            }else{
+                temp = temp.next;
             }
-            temp = temp.next;
         }
-        return head;
+        return virtual.next;
     }
 
     /**
