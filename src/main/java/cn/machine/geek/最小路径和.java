@@ -1,5 +1,7 @@
 package cn.machine.geek;
 
+import java.util.PriorityQueue;
+
 /**
  * 64. 最小路径和
  * 给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
@@ -32,6 +34,7 @@ public class 最小路径和 {
         if(grid.length == 1 && grid[0].length == 1){
             return grid[0][0];
         }
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         int n = grid.length;
         int m = grid[0].length;
         int[][] dp = new int[2][m];
