@@ -185,7 +185,7 @@ public class 笨阶乘 {
      *
      * 情况一：当 NN 对 44 取模的余数等于 00 时，有
      *
-     * \begin{aligned} \texttt{clumsy}(N) &= \underline{N \cdot (N - 1) / (N - 2) } + \cdots 8 \times 7 / 6 + \underline{ 5 - 4 \times 3 / 2 + 1 } \\ &= N + 1 + 5 - 6 + 1 \\ &= N + 1 \end{aligned}
+     * \begin{aligned} \texttt{clumsy}(N) &= cdot (N - 1) / (N - 2) } + \cdots 8 \times 7 / 6 + nderline - 4 \times 3 / 2 + 1 } \\ &= N + 1 + 5 - 6 + 1 \\ &= N + 1 \end{aligned}
      * clumsy(N)
      * ​
      *
@@ -207,7 +207,7 @@ public class 笨阶乘 {
      *
      * 情况二：当 NN 对 44 取模的余数等于 11 时，有
      *
-     * \begin{aligned} \texttt{clumsy}(N) &= \underline{N \cdot (N - 1) / (N - 2) } + \cdots 9 \times 8 / 7 + \underline{ 6 - 5 \times 4 / 3 + 2 - 1 } \\ &= N + 1 + 6 - 6 + 2 - 1 \\ &= N + 2 \end{aligned}
+     * \begin{aligned} \texttt{clumsy}(N) &= nderline{N \cdot (N - 1) / (N - 2) } + \cdots 9 \times 8 / 7 + nderline{ 6 - 5 \times 4 / 3 + 2 - 1 } \\ &= N + 1 + 6 - 6 + 2 - 1 \\ &= N + 2 \end{aligned}
      * clumsy(N)
      * ​
      *
@@ -227,7 +227,7 @@ public class 笨阶乘 {
      *
      * 情况三：当 NN 对 44 取模的余数等于 22 时，有
      *
-     * \begin{aligned} \texttt{clumsy}(N) &= \underline{N \cdot (N - 1) / (N - 2) } + \cdots 10 \times 9 / 8 + \underline{ 7 - 6 \times 5 / 4 + 3 - 2 \times 1 } \\ &= N + 1 + 7 - 7 + 3 - 2 \\ &= N + 2 \end{aligned}
+     * \begin{aligned} \texttt{clumsy}(N) &= nderline{N \cdot (N - 1) / (N - 2) } + \cdots 10 \times 9 / 8 + nderline{ 7 - 6 \times 5 / 4 + 3 - 2 \times 1 } \\ &= N + 1 + 7 - 7 + 3 - 2 \\ &= N + 2 \end{aligned}
      * clumsy(N)
      * ​
      *
@@ -247,7 +247,7 @@ public class 笨阶乘 {
      *
      * 情况四：当 NN 对 44 取模的余数等于 33 时，有
      *
-     * \begin{aligned} \texttt{clumsy}(N) &= \underline{N \cdot (N - 1) / (N - 2) } + \cdots 11 \times 10 / 9 + \underline{ 8 - 7 \times 6 / 5 + 4 - 3 \times 2 / 1 } \\ &= N + 1 + 8 - 8 + 4 - 6 \\ &= N - 1 \end{aligned}
+     * \begin{aligned} \texttt{clumsy}(N) &= nderline{N \cdot (N - 1) / (N - 2) } + \cdots 11 \times 10 / 9 + nderline{ 8 - 7 \times 6 / 5 + 4 - 3 \times 2 / 1 } \\ &= N + 1 + 8 - 8 + 4 - 6 \\ &= N - 1 \end{aligned}
      * clumsy(N)
      * ​
      *
