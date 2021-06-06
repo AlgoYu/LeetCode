@@ -6,67 +6,68 @@ import java.util.Queue;
 /**
  * 01 矩阵
  * 给定一个由 0 和 1 组成的矩阵，找出每个元素到最近的 0 的距离。
- *
+ * <p>
  * 两个相邻元素间的距离为 1 。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：
  * [[0,0,0],
- *  [0,1,0],
- *  [0,0,0]]
- *
+ * [0,1,0],
+ * [0,0,0]]
+ * <p>
  * 输出：
  * [[0,0,0],
- *  [0,1,0],
- *  [0,0,0]]
+ * [0,1,0],
+ * [0,0,0]]
  * 示例 2：
- *
+ * <p>
  * 输入：
  * [[0,0,0],
- *  [0,1,0],
- *  [1,1,1]]
- *
+ * [0,1,0],
+ * [1,1,1]]
+ * <p>
  * 输出：
  * [[0,0,0],
- *  [0,1,0],
- *  [1,2,1]]
- *
- *
+ * [0,1,0],
+ * [1,2,1]]
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 给定矩阵的元素个数不超过 10000。
  * 给定矩阵中至少有一个元素是 0。
  * 矩阵中的元素只在四个方向上相邻: 上、下、左、右。
  */
 public class 矩阵01 {
-    static int[][] dir = new int[][]{{-1,0},{1,0},{0,-1},{0,1}};
+    static int[][] dir = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
     public int[][] updateMatrix(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
         int[][] result = new int[n][m];
         boolean[][] visited = new boolean[n][m];
         Queue<int[]> queue = new LinkedList<>();
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < m; j++){
-                if(matrix[i][j] == 0){
-                    queue.offer(new int[]{i,j});
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 0) {
+                    queue.offer(new int[]{i, j});
                     visited[i][j] = true;
                 }
             }
         }
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int[] poll = queue.poll();
             int i = poll[0];
             int j = poll[1];
-            for (int[] di : dir){
+            for (int[] di : dir) {
                 int ti = i + di[0];
                 int tj = j + di[1];
-                if(ti >=0 && ti < n && tj >= 0 && tj < m && !visited[ti][tj]){
+                if (ti >= 0 && ti < n && tj >= 0 && tj < m && !visited[ti][tj]) {
                     result[ti][tj] = result[i][j] + 1;
-                    queue.offer(new int[]{ti,tj});
+                    queue.offer(new int[]{ti, tj});
                     visited[ti][tj] = true;
                 }
             }
