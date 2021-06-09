@@ -1,7 +1,5 @@
 package cn.machine.geek;
 
-import java.util.Stack;
-
 /**
  * 234. 回文链表
  * 请判断一个链表是否为回文链表。
@@ -29,7 +27,6 @@ public class 回文链表 {
         if(head == null || head.next == null){
             return true;
         }
-        Stack<Integer> stack = new Stack<>();
         // 取中间位置
         ListNode midNode = midNode(head);
         ListNode reverse = reverse(midNode.next);
