@@ -3,49 +3,59 @@ package cn.machine.geek;
 /**
  * 2. 两数相加
  * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
- *
+ * <p>
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
- *
+ * <p>
  * 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
- *
+ * <p>
+ * <p>
  * 输入：l1 = [2,4,3], l2 = [5,6,4]
  * 输出：[7,0,8]
  * 解释：342 + 465 = 807.
  */
 public class 两数相加 {
     public class ListNode {
-          int val;
-          ListNode next;
-          ListNode() {}
-          ListNode(int val) { this.val = val; }
-          ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode linked = new ListNode();
         ListNode head = linked;
         ListNode temp1 = l1;
         ListNode temp2 = l2;
         int n = 0;
-        while (temp1 != null || temp2 != null){
+        while (temp1 != null || temp2 != null) {
             int result = n;
-            if(temp1 != null){
+            if (temp1 != null) {
                 result += temp1.val;
                 temp1 = temp1.next;
             }
-            if(temp2 != null){
+            if (temp2 != null) {
                 result += temp2.val;
                 temp2 = temp2.next;
             }
-            n = result / 10 ;
+            n = result / 10;
             linked.next = new ListNode(result % 10);
             linked = linked.next;
         }
-        if(n > 0){
+        if (n > 0) {
             linked.next = new ListNode(n);
         }
         return head.next;

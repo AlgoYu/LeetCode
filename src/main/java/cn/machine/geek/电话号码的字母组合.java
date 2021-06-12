@@ -32,14 +32,14 @@ public class 电话号码的字母组合 {
     }
 
     public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
-        if(combination.length() == digits.length()){
+        if (combination.length() == digits.length()) {
             combinations.add(combination.toString());
             return;
         }
         String s = phoneMap.get(digits.charAt(index));
-        for (int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             combination.append(s.charAt(i));
-            backtrack(combinations,phoneMap,digits,index + 1,combination);
+            backtrack(combinations, phoneMap, digits, index + 1, combination);
             combination.deleteCharAt(index);
         }
     }

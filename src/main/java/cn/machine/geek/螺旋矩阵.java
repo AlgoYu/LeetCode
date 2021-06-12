@@ -6,23 +6,23 @@ import java.util.List;
 /**
  * 54. 螺旋矩阵
  * 给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
- *
+ * <p>
+ * <p>
  * 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
  * 输出：[1,2,3,6,9,8,7,4,5]
  * 示例 2：
- *
- *
+ * <p>
+ * <p>
  * 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
  * 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * m == matrix.length
  * n == matrix[i].length
  * 1 <= m, n <= 10
@@ -31,22 +31,22 @@ import java.util.List;
 public class 螺旋矩阵 {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> order = new ArrayList<Integer>();
-        if(matrix == null || matrix.length == 0 || matrix[0].length == 0){
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return order;
         }
         int m = matrix.length;
         int n = matrix[0].length;
         int total = m * n;
-        int row = 0,column = 0;
-        int[][] next = new int[][]{{0,1},{1,0},{0,-1},{-1,0}};
+        int row = 0, column = 0;
+        int[][] next = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         boolean[][] visitor = new boolean[m][n];
         int nextIndex = 0;
-        for (int i = 0; i < total; i++){
+        for (int i = 0; i < total; i++) {
             order.add(matrix[row][column]);
             visitor[row][column] = true;
             int nextRow = row + next[nextIndex][0];
             int nextColumn = column + next[nextIndex][1];
-            if(nextRow < 0 || nextRow >= m || nextColumn < 0 || nextColumn >= n || visitor[nextRow][nextColumn]){
+            if (nextRow < 0 || nextRow >= m || nextColumn < 0 || nextColumn >= n || visitor[nextRow][nextColumn]) {
                 nextIndex = (nextIndex + 1) % 4;
             }
             row += next[nextIndex][0];

@@ -3,35 +3,35 @@ package cn.machine.geek;
 /**
  * 直方图的水量
  * 给定一个直方图(也称柱状图)，假设有人从上面源源不断地倒水，最后直方图能存多少水量?直方图的宽度为 1。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的直方图，在这种情况下，可以接 6 个单位的水（蓝色部分表示水）。 感谢 Marcos 贡献此图。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: [0,1,0,2,1,0,1,3,2,1,2,1]
  * 输出: 6
  * 通过次数15,424提交次数24,171
  */
 public class 直方图的水量 {
     public int trap(int[] height) {
-        if(height == null || height.length == 0){
+        if (height == null || height.length == 0) {
             return 0;
         }
-        int left = 0,right = height.length - 1;
+        int left = 0, right = height.length - 1;
         int sum = 0;
-        while (left < right){
-            if(height[left] < height[right]){
+        while (left < right) {
+            if (height[left] < height[right]) {
                 int l = left + 1;
-                while (height[left] > height[l]){
+                while (height[left] > height[l]) {
                     sum += height[left] - height[l];
                     l++;
                 }
                 left = l;
-            }else{
+            } else {
                 int r = right - 1;
-                while (height[right] > height[r]){
+                while (height[right] > height[r]) {
                     sum += height[right] - height[r];
                     r--;
                 }

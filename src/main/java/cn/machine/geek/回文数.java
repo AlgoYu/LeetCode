@@ -8,14 +8,14 @@ package cn.machine.geek;
  */
 public class 回文数 {
     public boolean isPalindrome(int x) {
-        if(x < 0){
+        if (x < 0) {
             return false;
         }
         String s = String.valueOf(x);
         char[] chars = s.toCharArray();
-        int l = 0,r = chars.length - 1;
-        while (l < r){
-            if(chars[l++] != chars[r--]){
+        int l = 0, r = chars.length - 1;
+        while (l < r) {
+            if (chars[l++] != chars[r--]) {
                 return false;
             }
         }

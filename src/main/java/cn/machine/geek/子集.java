@@ -6,23 +6,23 @@ import java.util.List;
 /**
  * 子集
  * 给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。
- *
+ * <p>
  * 解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：nums = [1,2,3]
  * 输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
  * 示例 2：
- *
+ * <p>
  * 输入：nums = [0]
  * 输出：[[],[0]]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 1 <= nums.length <= 10
  * -10 <= nums[i] <= 10
  * nums 中的所有元素 互不相同
@@ -30,19 +30,19 @@ import java.util.List;
 public class 子集 {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
-        if(nums == null || nums.length == 0) return list;
-        backtrack(list,new ArrayList<>(),0,nums);
+        if (nums == null || nums.length == 0) return list;
+        backtrack(list, new ArrayList<>(), 0, nums);
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> com,int index,int[] nums){
-        if(index >= nums.length){
+    private void backtrack(List<List<Integer>> list, List<Integer> com, int index, int[] nums) {
+        if (index >= nums.length) {
             list.add(new ArrayList<>(com));
             return;
         }
-        backtrack(list,com,index + 1,nums);
+        backtrack(list, com, index + 1, nums);
         com.add(nums[index]);
-        backtrack(list,com,index + 1,nums);
+        backtrack(list, com, index + 1, nums);
         com.remove(com.size() - 1);
     }
     /**

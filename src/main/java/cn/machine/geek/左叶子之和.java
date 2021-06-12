@@ -1,17 +1,17 @@
 package cn.machine.geek;
 
 /**
- *  左叶子之和
+ * 左叶子之和
  * 计算给定二叉树的所有左叶子之和。
- *
+ * <p>
  * 示例：
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
- *
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
+ * <p>
  * 在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24
  */
 public class 左叶子之和 {
@@ -19,25 +19,29 @@ public class 左叶子之和 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-    public int sumOfLeftLeaves(TreeNode root) {
-        if(root == null){
-            return 0;
+
+        TreeNode(int x) {
+            val = x;
         }
-        return (root.left == null ? 0 : sum(root,root.left)) + (root.right == null? 0 : sum(root,root.right));
     }
 
-    private int sum(TreeNode parent,TreeNode node){
-        if(node.left == null && node.right == null){
-            return parent.left == node? node.val : 0;
+    public int sumOfLeftLeaves(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return (root.left == null ? 0 : sum(root, root.left)) + (root.right == null ? 0 : sum(root, root.right));
+    }
+
+    private int sum(TreeNode parent, TreeNode node) {
+        if (node.left == null && node.right == null) {
+            return parent.left == node ? node.val : 0;
         }
         int total = 0;
-        if(node.left != null){
-            total += sum(node,node.left);
+        if (node.left != null) {
+            total += sum(node, node.left);
         }
-        if(node.right != null){
-            total += sum(node,node.right);
+        if (node.right != null) {
+            total += sum(node, node.right);
         }
         return total;
     }

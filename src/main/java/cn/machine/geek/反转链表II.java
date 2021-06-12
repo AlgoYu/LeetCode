@@ -3,12 +3,12 @@ package cn.machine.geek;
 /**
  * 92. 反转链表 II
  * 反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
- *
+ * <p>
  * 说明:
  * 1 ≤ m ≤ n ≤ 链表长度。
- *
+ * <p>
  * 示例:
- *
+ * <p>
  * 输入: 1->2->3->4->5->NULL, m = 2, n = 4
  * 输出: 1->4->3->2->5->NULL
  */
@@ -16,24 +16,34 @@ public class 反转链表II {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
+
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(head == null){
+        if (head == null) {
             return null;
         }
         ListNode virtual = new ListNode(-1);
         virtual.next = head;
 
         ListNode front = virtual;
-        for (int i = 0; i < left - 1; i++){
+        for (int i = 0; i < left - 1; i++) {
             front = front.next;
         }
 
         ListNode back = front;
-        for (int i = 0; i <= right - left; i++){
+        for (int i = 0; i <= right - left; i++) {
             back = back.next;
         }
 
@@ -46,7 +56,7 @@ public class 反转链表II {
 
         ListNode tmp = null;
         ListNode backUp = leftNode;
-        while (leftNode.next != null){
+        while (leftNode.next != null) {
             ListNode nextNode = leftNode.next;
             leftNode.next = tmp;
             tmp = leftNode;

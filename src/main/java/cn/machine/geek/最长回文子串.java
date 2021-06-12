@@ -3,59 +3,59 @@ package cn.machine.geek;
 /**
  * 5. 最长回文子串
  * 给你一个字符串 s，找到 s 中最长的回文子串。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：s = "babad"
  * 输出："bab"
  * 解释："aba" 同样是符合题意的答案。
  * 示例 2：
- *
+ * <p>
  * 输入：s = "cbbd"
  * 输出："bb"
  * 示例 3：
- *
+ * <p>
  * 输入：s = "a"
  * 输出："a"
  * 示例 4：
- *
+ * <p>
  * 输入：s = "ac"
  * 输出："a"
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 1 <= s.length <= 1000
  * s 仅由数字和英文字母（大写和/或小写）组成
  */
 public class 最长回文子串 {
     public String longestPalindrome(String s) {
-        if(s == null || s.length() < 2){
+        if (s == null || s.length() < 2) {
             return s;
         }
         char[] chars = s.toCharArray();
         int max = 0;
         int begin = 0;
-        for (int i = chars.length - 2; i >= 0; i--){
+        for (int i = chars.length - 2; i >= 0; i--) {
             int mid1 = mid(chars, i, i + 1);
             int mid2 = mid(chars, i - 1, i + 1);
-            mid1 = Math.max(mid1,mid2);
-            if(mid1 > max){
+            mid1 = Math.max(mid1, mid2);
+            if (mid1 > max) {
                 max = mid1;
                 begin = i - ((mid1 - 1) >> 1);
             }
         }
-        if(chars[0] == chars[1] && max < 2){
+        if (chars[0] == chars[1] && max < 2) {
             max = 2;
             begin = 0;
         }
-        return new String(chars,begin,max);
+        return new String(chars, begin, max);
     }
 
-    private int mid(char[] chars,int left,int right){
-        while (left >= 0 && right < chars.length && chars[left] == chars[right]){
+    private int mid(char[] chars, int left, int right) {
+        while (left >= 0 && right < chars.length && chars[left] == chars[right]) {
             left--;
             right++;
         }

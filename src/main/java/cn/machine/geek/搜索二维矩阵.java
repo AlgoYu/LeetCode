@@ -8,26 +8,26 @@ package cn.machine.geek;
  */
 public class 搜索二维矩阵 {
     public boolean searchMatrix(int[][] matrix, int target) {
-        if(matrix == null || matrix.length == 0 || matrix[0].length == 0){
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return false;
         }
         int row = 0;
-        while (row < matrix.length && target >= matrix[row][0]){
-            if(target == matrix[row][0]){
+        while (row < matrix.length && target >= matrix[row][0]) {
+            if (target == matrix[row][0]) {
                 return true;
             }
             row++;
         }
-        int[] datas = matrix[Math.max(0,row - 1)];
-        int l = 0,r = datas.length;
+        int[] datas = matrix[Math.max(0, row - 1)];
+        int l = 0, r = datas.length;
         int mid = (l + r) >> 1;
         int preMid = -1;
-        while (mid != preMid && l < r){
-            if(datas[mid] > target){
+        while (mid != preMid && l < r) {
+            if (datas[mid] > target) {
                 r = mid;
-            }else if(datas[mid] < target){
+            } else if (datas[mid] < target) {
                 l = mid + 1;
-            }else{
+            } else {
                 return true;
             }
             preMid = mid;

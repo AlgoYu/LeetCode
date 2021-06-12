@@ -3,13 +3,13 @@ package cn.machine.geek;
 /**
  * 234. 回文链表
  * 请判断一个链表是否为回文链表。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: 1->2
  * 输出: false
  * 示例 2:
- *
+ * <p>
  * 输入: 1->2->2->1
  * 输出: true
  * 进阶：
@@ -19,19 +19,29 @@ public class 回文链表 {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
+
     public boolean isPalindrome(ListNode head) {
-        if(head == null || head.next == null){
+        if (head == null || head.next == null) {
             return true;
         }
         // 取中间位置
         ListNode midNode = midNode(head);
         ListNode reverse = reverse(midNode.next);
-        while (reverse != null){
-            if(reverse.val != head.val){
+        while (reverse != null) {
+            if (reverse.val != head.val) {
                 return false;
             }
             reverse = reverse.next;
@@ -40,19 +50,19 @@ public class 回文链表 {
         return true;
     }
 
-    private ListNode midNode(ListNode node){
+    private ListNode midNode(ListNode node) {
         ListNode slow = node;
         ListNode fast = node;
-        while (fast.next != null && fast.next.next != null){
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         return slow;
     }
 
-    private ListNode reverse(ListNode node){
+    private ListNode reverse(ListNode node) {
         ListNode newNode = null;
-        while (node != null){
+        while (node != null) {
             ListNode temp = node.next;
             node.next = newNode;
             newNode = node;

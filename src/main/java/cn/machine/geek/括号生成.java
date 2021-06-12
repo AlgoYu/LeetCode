@@ -8,60 +8,60 @@ import java.util.Stack;
  * 括号生成
  * 难度
  * 中等
- *
+ * <p>
  * 1613
- *
+ * <p>
  * 收藏
- *
+ * <p>
  * 分享
  * 切换为英文
  * 接收动态
  * 反馈
  * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：n = 3
  * 输出：["((()))","(()())","(())()","()(())","()()()"]
  * 示例 2：
- *
+ * <p>
  * 输入：n = 1
  * 输出：["()"]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 1 <= n <= 8
  */
 public class 括号生成 {
     public List<String> generateParenthesis(int n) {
         List<String> result = new LinkedList<>();
-        backtrack(result,new StringBuilder(),n);
+        backtrack(result, new StringBuilder(), n);
         return result;
     }
 
-    private void backtrack(List<String> result,StringBuilder stringBuilder,int n){
-        if(stringBuilder.length() == n * 2 && isValid(stringBuilder)){
+    private void backtrack(List<String> result, StringBuilder stringBuilder, int n) {
+        if (stringBuilder.length() == n * 2 && isValid(stringBuilder)) {
             result.add(stringBuilder.toString());
         }
-        if(stringBuilder.length() > n * 2){
+        if (stringBuilder.length() > n * 2) {
             return;
         }
         stringBuilder.append('(');
-        backtrack(result,stringBuilder,n);
-        stringBuilder.delete(stringBuilder.length() - 1,stringBuilder.length());
+        backtrack(result, stringBuilder, n);
+        stringBuilder.delete(stringBuilder.length() - 1, stringBuilder.length());
         stringBuilder.append(')');
-        backtrack(result,stringBuilder,n);
-        stringBuilder.delete(stringBuilder.length() - 1,stringBuilder.length());
+        backtrack(result, stringBuilder, n);
+        stringBuilder.delete(stringBuilder.length() - 1, stringBuilder.length());
     }
 
-    private boolean isValid(StringBuilder s){
+    private boolean isValid(StringBuilder s) {
         Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ')'){
-                if(stack.isEmpty()){
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ')') {
+                if (stack.isEmpty()) {
                     return false;
                 }
                 stack.pop();

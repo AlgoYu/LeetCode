@@ -3,49 +3,49 @@ package cn.machine.geek;
 /**
  * 14. 最长公共前缀
  * 编写一个函数来查找字符串数组中的最长公共前缀。
- *
+ * <p>
  * 如果不存在公共前缀，返回空字符串 ""。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: ["flower","flow","flight"]
  * 输出: "fl"
  * 示例 2:
- *
+ * <p>
  * 输入: ["dog","racecar","car"]
  * 输出: ""
  * 解释: 输入不存在公共前缀。
  * 说明:
- *
+ * <p>
  * 所有输入只包含小写字母 a-z 。
  */
 public class 最长公共前缀 {
     public String longestCommonPrefix(String[] strs) {
-        if(null == strs || strs.length <= 0){
+        if (null == strs || strs.length <= 0) {
             return "";
         }
         String temp = strs[0];
-        if(null == temp || "".equals(temp)){
+        if (null == temp || "".equals(temp)) {
             return "";
         }
         int n = temp.length();
-        for (int i = 0; i < strs.length; i++){
-            if(n <= 0){
+        for (int i = 0; i < strs.length; i++) {
+            if (n <= 0) {
                 return "";
             }
-            for (int j = 0; j < n; j++){
-                if(j >= strs[i].length()){
+            for (int j = 0; j < n; j++) {
+                if (j >= strs[i].length()) {
                     n = strs[i].length();
                     break;
                 }
-                if(temp.charAt(j) != strs[i].charAt(j)){
+                if (temp.charAt(j) != strs[i].charAt(j)) {
                     n = j;
                     break;
                 }
             }
         }
-        if(n > 0){
-            return temp.substring(0,n);
+        if (n > 0) {
+            return temp.substring(0, n);
         }
         return "";
     }

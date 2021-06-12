@@ -8,57 +8,57 @@ import java.util.Set;
 /**
  * 47. 全排列 II
  * 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：nums = [1,1,2]
  * 输出：
  * [[1,1,2],
- *  [1,2,1],
- *  [2,1,1]]
+ * [1,2,1],
+ * [2,1,1]]
  * 示例 2：
- *
+ * <p>
  * 输入：nums = [1,2,3]
  * 输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 1 <= nums.length <= 8
  * -10 <= nums[i] <= 10
  */
 public class 全排列II {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> count = new ArrayList<>();
-        if(nums == null || nums.length == 0){
+        if (nums == null || nums.length == 0) {
             return count;
         }
-        com(nums,0,count,new HashSet<>());
+        com(nums, 0, count, new HashSet<>());
         return count;
     }
 
-    public void com(int[] nums,int start,List<List<Integer>> count,Set<List<Integer>> set){
-        if(start == nums.length){
+    public void com(int[] nums, int start, List<List<Integer>> count, Set<List<Integer>> set) {
+        if (start == nums.length) {
             List<Integer> list = new ArrayList<>();
-            for (int i = 0; i < nums.length; i++){
+            for (int i = 0; i < nums.length; i++) {
                 list.add(nums[i]);
             }
-            if(!set.contains(list)){
+            if (!set.contains(list)) {
                 count.add(list);
                 set.add(list);
             }
             return;
         }
-        for (int i = start; i < nums.length; i++){
-            swap(nums,start,i);
-            com(nums,start + 1,count,set);
-            swap(nums,start,i);
+        for (int i = start; i < nums.length; i++) {
+            swap(nums, start, i);
+            com(nums, start + 1, count, set);
+            swap(nums, start, i);
         }
     }
 
-    private void swap(int[] nums,int left,int right){
+    private void swap(int[] nums, int left, int right) {
         int temp = nums[left];
         nums[left] = nums[right];
         nums[right] = temp;

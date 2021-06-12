@@ -5,29 +5,30 @@ import java.util.Stack;
 /**
  * 剑指 Offer 09. 用两个栈实现队列
  * 用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：
  * ["CQueue","appendTail","deleteHead","deleteHead"]
  * [[],[3],[],[]]
  * 输出：[null,null,3,-1]
  * 示例 2：
- *
+ * <p>
  * 输入：
  * ["CQueue","deleteHead","appendTail","appendTail","deleteHead","deleteHead"]
  * [[],[],[5],[2],[],[]]
  * 输出：[null,-1,null,null,5,2]
  * 提示：
- *
+ * <p>
  * 1 <= values <= 10000
  * 最多会对 appendTail、deleteHead 进行 10000 次调用
  */
 public class 用两个栈实现队列 {
     private Stack<Integer> enStack;
     private Stack<Integer> deStack;
+
     public 用两个栈实现队列() {
         enStack = new Stack<>();
         deStack = new Stack<>();
@@ -38,16 +39,16 @@ public class 用两个栈实现队列 {
     }
 
     public int deleteHead() {
-        if(deStack.isEmpty()){
-            if(enStack.isEmpty()){
+        if (deStack.isEmpty()) {
+            if (enStack.isEmpty()) {
                 return -1;
-            }else{
-                while (!enStack.isEmpty()){
+            } else {
+                while (!enStack.isEmpty()) {
                     deStack.push(enStack.pop());
                 }
                 return deStack.pop();
             }
-        }else{
+        } else {
             return deStack.pop();
         }
     }

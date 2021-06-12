@@ -5,18 +5,18 @@ import java.util.Arrays;
 /**
  * 最接近的三数之和
  * 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例：
- *
+ * <p>
  * 输入：nums = [-1,2,1,-4], target = 1
  * 输出：2
  * 解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 3 <= nums.length <= 10^3
  * -10^3 <= nums[i] <= 10^3
  * -10^4 <= target <= 10^4
@@ -25,29 +25,29 @@ public class 最接近的三数之和 {
     public static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int best = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++){
-            if(i > 0 && nums[i] == nums[i - 1]){
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
             int left = i + 1;
             int right = nums.length - 1;
-            while (left < right){
+            while (left < right) {
                 int num = nums[i] + nums[left] + nums[right];
-                if(num == target){
+                if (num == target) {
                     return num;
                 }
-                if(Math.abs(num - target) < Math.abs(best - target)){
+                if (Math.abs(num - target) < Math.abs(best - target)) {
                     best = num;
                 }
-                if(num > target){
+                if (num > target) {
                     int r0 = right - 1;
-                    while (left < r0 && nums[right] == nums[r0]){
+                    while (left < r0 && nums[right] == nums[r0]) {
                         --r0;
                     }
                     right = r0;
-                }else{
+                } else {
                     int l0 = left + 1;
-                    while (l0 < right && nums[left] == nums[l0]){
+                    while (l0 < right && nums[left] == nums[l0]) {
                         l0++;
                     }
                     left = l0;

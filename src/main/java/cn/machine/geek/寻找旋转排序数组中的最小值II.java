@@ -6,44 +6,44 @@ package cn.machine.geek;
  * 若旋转 4 次，则可以得到 [4,5,6,7,0,1,4]
  * 若旋转 7 次，则可以得到 [0,1,4,4,5,6,7]
  * 注意，数组 [a[0], a[1], a[2], ..., a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], ..., a[n-2]] 。
- *
+ * <p>
  * 给你一个可能存在 重复 元素值的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：nums = [1,3,5]
  * 输出：1
  * 示例 2：
- *
+ * <p>
  * 输入：nums = [2,2,2,0,1]
  * 输出：0
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * n == nums.length
  * 1 <= n <= 5000
  * -5000 <= nums[i] <= 5000
  * nums 原来是一个升序排序的数组，并进行了 1 至 n 次旋转
- *
- *
+ * <p>
+ * <p>
  * 进阶：
- *
+ * <p>
  * 这道题是 寻找旋转排序数组中的最小值 的延伸题目。
  * 允许重复会影响算法的时间复杂度吗？会如何影响，为什么？
  */
 public class 寻找旋转排序数组中的最小值II {
     public int findMin(int[] nums) {
-        int left = 0,right = nums.length - 1;
-        while (left < right){
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
             int mid = (left + right) >> 1;
-            if(nums[mid] < nums[right]){
+            if (nums[mid] < nums[right]) {
                 right = mid;
-            }else if(nums[mid] > nums[right]){
+            } else if (nums[mid] > nums[right]) {
                 left = mid + 1;
-            }else{
+            } else {
                 right--;
             }
         }

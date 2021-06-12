@@ -4,37 +4,37 @@ package cn.machine.geek;
  * 单词搜索
  * 难度
  * 中等
- *
+ * <p>
  * 824
- *
+ * <p>
  * 收藏
- *
+ * <p>
  * 分享
  * 切换为英文
  * 接收动态
  * 反馈
  * 给定一个二维网格和一个单词，找出该单词是否存在于网格中。
- *
+ * <p>
  * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例:
- *
+ * <p>
  * board =
  * [
- *   ['A','B','C','E'],
- *   ['S','F','C','S'],
- *   ['A','D','E','E']
+ * ['A','B','C','E'],
+ * ['S','F','C','S'],
+ * ['A','D','E','E']
  * ]
- *
+ * <p>
  * 给定 word = "ABCCED", 返回 true
  * 给定 word = "SEE", 返回 true
  * 给定 word = "ABCB", 返回 false
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * board 和 word 中只包含大写和小写英文字母。
  * 1 <= board.length <= 200
  * 1 <= board[i].length <= 200
@@ -45,9 +45,9 @@ public class 单词搜索 {
         int n = board.length;
         int m = board[0].length;
         boolean[][] visited = new boolean[n][m];
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < m; j++){
-                if(search(board,visited,i,j,0,word)){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (search(board, visited, i, j, 0, word)) {
                     return true;
                 }
             }
@@ -55,37 +55,37 @@ public class 单词搜索 {
         return false;
     }
 
-    private boolean search(char[][] board,boolean[][] visited,int row,int column,int index,String word){
-        if(board[row][column] != word.charAt(index)){
+    private boolean search(char[][] board, boolean[][] visited, int row, int column, int index, String word) {
+        if (board[row][column] != word.charAt(index)) {
             return false;
         }
-        if(index == word.length() - 1){
+        if (index == word.length() - 1) {
             return board[row][column] == word.charAt(index);
         }
         visited[row][column] = true;
         boolean flag = false;
-        if(row - 1 >= 0 && !visited[row-1][column]){
-            flag = search(board,visited,row - 1,column,index+1,word);
+        if (row - 1 >= 0 && !visited[row - 1][column]) {
+            flag = search(board, visited, row - 1, column, index + 1, word);
         }
-        if(flag){
+        if (flag) {
             return flag;
         }
-        if(row + 1 < board.length && !visited[row + 1][column]){
-            flag = search(board,visited,row + 1,column,index+1,word);
+        if (row + 1 < board.length && !visited[row + 1][column]) {
+            flag = search(board, visited, row + 1, column, index + 1, word);
         }
-        if(flag){
+        if (flag) {
             return flag;
         }
-        if(column - 1 >= 0 && !visited[row][column - 1]){
-            flag = search(board,visited,row,column - 1,index+1,word);
+        if (column - 1 >= 0 && !visited[row][column - 1]) {
+            flag = search(board, visited, row, column - 1, index + 1, word);
         }
-        if(flag){
+        if (flag) {
             return flag;
         }
-        if(column + 1 < board[0].length && !visited[row][column + 1]){
-            flag = search(board,visited,row,column + 1,index+1,word);
+        if (column + 1 < board[0].length && !visited[row][column + 1]) {
+            flag = search(board, visited, row, column + 1, index + 1, word);
         }
-        if(flag){
+        if (flag) {
             return flag;
         }
         visited[row][column] = false;

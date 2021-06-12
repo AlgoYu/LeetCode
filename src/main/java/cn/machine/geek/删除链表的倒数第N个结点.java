@@ -3,28 +3,28 @@ package cn.machine.geek;
 /**
  * 19. 删除链表的倒数第 N 个结点
  * 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
- *
+ * <p>
  * 进阶：你能尝试使用一趟扫描实现吗？
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
- *
+ * <p>
+ * <p>
  * 输入：head = [1,2,3,4,5], n = 2
  * 输出：[1,2,3,5]
  * 示例 2：
- *
+ * <p>
  * 输入：head = [1], n = 1
  * 输出：[]
  * 示例 3：
- *
+ * <p>
  * 输入：head = [1,2], n = 1
  * 输出：[1]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 链表中结点的数目为 sz
  * 1 <= sz <= 30
  * 0 <= Node.val <= 100
@@ -35,31 +35,42 @@ public class 删除链表的倒数第N个结点 {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
+
     private int k;
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        if(head == null){
+        if (head == null) {
             return null;
         }
-        if(head.next == null && n == 1){
+        if (head.next == null && n == 1) {
             return null;
         }
         k = n;
         remove(head);
-        return k == 0? head.next:head;
+        return k == 0 ? head.next : head;
     }
 
-    private void remove(ListNode node){
-        if(node == null){
+    private void remove(ListNode node) {
+        if (node == null) {
             return;
         }
         remove(node.next);
         k--;
-        if(k == -1){
-            if(node.next != null){
+        if (k == -1) {
+            if (node.next != null) {
                 node.next = node.next.next;
             }
         }

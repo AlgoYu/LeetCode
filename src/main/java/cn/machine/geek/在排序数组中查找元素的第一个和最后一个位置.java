@@ -8,27 +8,28 @@ package cn.machine.geek;
  */
 public class 在排序数组中查找元素的第一个和最后一个位置 {
     public int[] searchRange(int[] nums, int target) {
-        int[] result = new int[]{-1,-1};
-        if(nums.length == 0) return result;
+        int[] result = new int[]{-1, -1};
+        if (nums.length == 0) return result;
         int index = binarySearch(nums, target);
-        if(index == -1) return result;
-        int left = index - 1,right = index + 1;
-        while(left >= 0 && nums[left] == target) left--;
+        if (index == -1) return result;
+        int left = index - 1, right = index + 1;
+        while (left >= 0 && nums[left] == target) left--;
         while (right < nums.length && nums[right] == target) right++;
         result[0] = left + 1;
         result[1] = right - 1;
         return result;
     }
-    private int binarySearch(int[] nums, int target){
+
+    private int binarySearch(int[] nums, int target) {
         int left = 0;
         int right = nums.length;
-        while (left < right){
+        while (left < right) {
             int mid = (left + right) >> 1;
-            if(nums[mid] == target){
+            if (nums[mid] == target) {
                 return mid;
-            }else if(nums[mid] > target){
+            } else if (nums[mid] > target) {
                 right = mid;
-            }else{
+            } else {
                 left = mid + 1;
             }
         }

@@ -6,22 +6,22 @@ import java.util.Queue;
 /**
  * 剑指 Offer 55 - I. 二叉树的深度
  * 输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
- *
+ * <p>
  * 例如：
- *
+ * <p>
  * 给定二叉树 [3,9,20,null,null,15,7]，
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
  * 返回它的最大深度 3 。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 节点总数 <= 10000
  */
 public class 二叉树的深度 {
@@ -38,20 +38,20 @@ public class 二叉树的深度 {
 
     public int maxDepth(TreeNode root) {
         int height = 0;
-        if(root != null){
+        if (root != null) {
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
             int layer = queue.size();
-            while (!queue.isEmpty()){
+            while (!queue.isEmpty()) {
                 TreeNode poll = queue.poll();
                 layer--;
-                if(poll.left != null){
+                if (poll.left != null) {
                     queue.add(poll.left);
                 }
-                if(poll.right != null){
+                if (poll.right != null) {
                     queue.add(poll.right);
                 }
-                if(layer==0){
+                if (layer == 0) {
                     height++;
                     layer = queue.size();
                 }

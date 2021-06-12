@@ -10,15 +10,15 @@ import java.util.Stack;
  */
 public class 笨阶乘 {
     public int clumsy(int N) {
-        if(N == 0){
+        if (N == 0) {
             return 0;
         }
         int i = 0;
         N--;
         Stack<Integer> stack = new Stack<>();
         stack.push(N);
-        while (N > 0){
-            switch (i){
+        while (N > 0) {
+            switch (i) {
                 case 0:
                     stack.push(stack.pop() * N);
                     break;
@@ -36,7 +36,7 @@ public class 笨阶乘 {
             N--;
         }
         int sum = 0;
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             sum += stack.pop();
         }
         return sum;

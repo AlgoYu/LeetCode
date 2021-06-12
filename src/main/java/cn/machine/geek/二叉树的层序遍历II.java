@@ -6,31 +6,31 @@ import java.util.*;
  * 二叉树的层序遍历 II
  * 难度
  * 中等
- *
+ * <p>
  * 416
- *
+ * <p>
  * 收藏
- *
+ * <p>
  * 分享
  * 切换为英文
  * 接收动态
  * 反馈
  * 给定一个二叉树，返回其节点值自底向上的层序遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
- *
+ * <p>
  * 例如：
  * 给定二叉树 [3,9,20,null,null,15,7],
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
  * 返回其自底向上的层序遍历为：
- *
+ * <p>
  * [
- *   [15,7],
- *   [9,20],
- *   [3]
+ * [15,7],
+ * [9,20],
+ * [3]
  * ]
  */
 public class 二叉树的层序遍历II {
@@ -38,34 +38,41 @@ public class 二叉树的层序遍历II {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
         TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
+
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> result = new LinkedList<>();
-        if(root == null) return result;
+        if (root == null) return result;
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             List<Integer> list = new LinkedList<>();
             int size = queue.size();
-            for (int i = 0; i < size; i++){
+            for (int i = 0; i < size; i++) {
                 TreeNode poll = queue.poll();
                 list.add(poll.val);
-                if(poll.left != null){
+                if (poll.left != null) {
                     queue.offer(poll.left);
                 }
-                if(poll.right != null){
+                if (poll.right != null) {
                     queue.offer(poll.right);
                 }
             }
-            result.add(0,list);
+            result.add(0, list);
         }
         return result;
     }

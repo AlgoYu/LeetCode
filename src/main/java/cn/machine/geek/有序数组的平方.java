@@ -3,52 +3,52 @@ package cn.machine.geek;
 /**
  * 977. 有序数组的平方
  * 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：nums = [-4,-1,0,3,10]
  * 输出：[0,1,9,16,100]
  * 解释：平方后，数组变为 [16,1,0,9,100]
  * 排序后，数组变为 [0,1,9,16,100]
  * 示例 2：
- *
+ * <p>
  * 输入：nums = [-7,-3,2,3,11]
  * 输出：[4,9,9,49,121]
- *
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * 1 <= nums.length <= 104
  * -104 <= nums[i] <= 104
  * nums 已按 非递减顺序 排序
  */
 public class 有序数组的平方 {
     public int[] sortedSquares(int[] nums) {
-        if(nums == null || nums.length == 0){
-            return nums == null? null : new int[0];
+        if (nums == null || nums.length == 0) {
+            return nums == null ? null : new int[0];
         }
         int len = nums.length;
         int left = -1;
-        for (int i = 0; i < len; i++){
-            if(nums[i] < 0){
+        for (int i = 0; i < len; i++) {
+            if (nums[i] < 0) {
                 left = i;
             }
         }
-        int index = 0,right = left + 1;
+        int index = 0, right = left + 1;
         int[] array = new int[len];
-        while (left >= 0 || right < len){
-            if(left < 0){
+        while (left >= 0 || right < len) {
+            if (left < 0) {
                 array[index] = nums[right] * nums[right];
                 right++;
-            }else if(right == len){
+            } else if (right == len) {
                 array[index] = nums[left] * nums[left];
                 left--;
-            }else if(Math.abs(nums[right]) > Math.abs(nums[left])){
+            } else if (Math.abs(nums[right]) > Math.abs(nums[left])) {
                 array[index] = nums[left] * nums[left];
                 left--;
-            }else{
+            } else {
                 array[index] = nums[right] * nums[right];
                 right++;
             }

@@ -16,17 +16,18 @@ public class 二叉搜索树的最近公共祖先 {
             val = x;
         }
     }
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null){
+        if (root == null) {
             return null;
         }
         TreeNode tmp = root;
-        while (tmp != null){
-            if(tmp.val > p.val && tmp.val > q.val){
+        while (tmp != null) {
+            if (tmp.val > p.val && tmp.val > q.val) {
                 tmp = tmp.left;
                 continue;
             }
-            if(tmp.val < p.val && tmp.val < q.val){
+            if (tmp.val < p.val && tmp.val < q.val) {
                 tmp = tmp.right;
                 continue;
             }

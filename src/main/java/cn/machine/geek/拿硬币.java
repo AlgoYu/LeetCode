@@ -3,34 +3,34 @@ package cn.machine.geek;
 /**
  * LCP 06. 拿硬币
  * 桌上有 n 堆力扣币，每堆的数量保存在数组 coins 中。我们每次可以选择任意一堆，拿走其中的一枚或者两枚，求拿完所有力扣币的最少次数。
- *
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：[4,2,1]
- *
+ * <p>
  * 输出：4
- *
+ * <p>
  * 解释：第一堆力扣币最少需要拿 2 次，第二堆最少需要拿 1 次，第三堆最少需要拿 1 次，总共 4 次即可拿完。
- *
+ * <p>
  * 示例 2：
- *
+ * <p>
  * 输入：[2,3,10]
- *
+ * <p>
  * 输出：8
- *
+ * <p>
  * 限制：
- *
+ * <p>
  * 1 <= n <= 4
  * 1 <= coins[i] <= 10
  */
 public class 拿硬币 {
     public int minCount(int[] coins) {
-        if(coins == null || coins.length == 0){
+        if (coins == null || coins.length == 0) {
             return 0;
         }
         int min = 0;
-        for (int i = 1; i < coins.length; i++){
-            min = Math.min(min + coins[i],min + coins[i] / 2);
+        for (int i = 1; i < coins.length; i++) {
+            min = Math.min(min + coins[i], min + coins[i] / 2);
         }
         return min;
     }

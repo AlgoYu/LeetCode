@@ -3,16 +3,16 @@ package cn.machine.geek;
 /**
  * 72. 编辑距离
  * 给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
- *
+ * <p>
  * 你可以对一个单词进行如下三种操作：
- *
+ * <p>
  * 插入一个字符
  * 删除一个字符
  * 替换一个字符
- *
- *
+ * <p>
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：word1 = "horse", word2 = "ros"
  * 输出：3
  * 解释：
@@ -20,7 +20,7 @@ package cn.machine.geek;
  * rorse -> rose (删除 'r')
  * rose -> ros (删除 'e')
  * 示例 2：
- *
+ * <p>
  * 输入：word1 = "intention", word2 = "execution"
  * 输出：5
  * 解释：
@@ -35,21 +35,21 @@ public class 编辑距离 {
         char[] chars1 = word1.toCharArray();
         char[] chars2 = word2.toCharArray();
         int dp[][] = new int[chars1.length + 1][chars2.length + 1];
-        for (int i = 1; i <= chars1.length; i++){
+        for (int i = 1; i <= chars1.length; i++) {
             dp[i][0] = i;
         }
-        for (int i = 1; i <= chars2.length; i++){
+        for (int i = 1; i <= chars2.length; i++) {
             dp[0][i] = i;
         }
-        for (int i = 1; i <= chars1.length; i++){
-            for (int j = 1; j <= chars2.length; j++){
+        for (int i = 1; i <= chars1.length; i++) {
+            for (int j = 1; j <= chars2.length; j++) {
                 int left = dp[i][j - 1] + 1;
                 int top = dp[i - 1][j] + 1;
                 int leftTop = dp[i - 1][j - 1];
-                if(chars1[i - 1] != chars2[j - 1]){
+                if (chars1[i - 1] != chars2[j - 1]) {
                     leftTop++;
                 }
-                dp[i][j] = Math.min(left,Math.min(top,leftTop));
+                dp[i][j] = Math.min(left, Math.min(top, leftTop));
             }
         }
         return dp[chars1.length][chars2.length];
