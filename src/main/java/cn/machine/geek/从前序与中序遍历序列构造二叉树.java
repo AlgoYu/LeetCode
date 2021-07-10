@@ -50,13 +50,11 @@ public class 从前序与中序遍历序列构造二叉树 {
             return null;
         }
 
-        // 前序遍历中的第一个节点就是根节点
-        int preorder_root = preorder_left;
         // 在中序遍历中定位根节点
-        int inorder_root = indexMap.get(preorder[preorder_root]);
+        int inorder_root = indexMap.get(preorder[preorder_left]);
 
         // 先把根节点建立出来
-        TreeNode root = new TreeNode(preorder[preorder_root]);
+        TreeNode root = new TreeNode(preorder[preorder_left]);
         // 得到左子树中的节点数目
         int size_left_subtree = inorder_root - inorder_left;
         // 递归地构造左子树，并连接到根节点
