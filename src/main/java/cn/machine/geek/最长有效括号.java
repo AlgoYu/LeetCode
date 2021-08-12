@@ -30,26 +30,4 @@ public class 最长有效括号 {
         }
         return max;
     }
-
-    /**
-     * 有效的括号
-     *
-     * @param chars
-     * @param left
-     * @param right
-     * @return
-     */
-    private boolean isValid(char[] chars, int left, int right) {
-        int leftBracket = 0;
-        for (int i = left; i <= right; i++) {
-            if (chars[i] == '(') {
-                leftBracket++;
-                continue;
-            }
-            if (leftBracket == 0) {
-                return false;
-            }
-            leftBracket--;
-        }
-    }
 }
