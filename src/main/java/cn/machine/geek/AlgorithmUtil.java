@@ -1,5 +1,8 @@
 package cn.machine.geek;
 
+import java.util.List;
+import java.util.Objects;
+
 /**
  * @Author XiaoYu
  * @Description 算法工具
@@ -67,6 +70,34 @@ public class AlgorithmUtil {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * List字符串对数器
+     *
+     * @param listA 字符串列表A
+     * @param listB 字符串列表B
+     * @return 是否相等
+     */
+    public static boolean isEqual(List<String> listA, List<String> listB) {
+        if (listA == null && listB == null) {
+            return true;
+        }
+        if (listA == null || listB == null) {
+            return false;
+        }
+        if (listA.size() != listB.size()) {
+            return false;
+        }
+        int n = listA.size();
+        for (int i = 0; i < n; i++) {
+            String sa = listA.get(i);
+            String sb = listB.get(i);
+            if (!Objects.equals(sa, sb)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
