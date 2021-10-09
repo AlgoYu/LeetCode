@@ -32,19 +32,12 @@ package cn.machine.geek;
  */
 public class 排列硬币 {
     public int arrangeCoins(int n) {
-        if (n == 0 || n == 1) {
-            return n;
+        int result = 0;
+        int step = 1;
+        while(n >= step){
+            n -= step++;
+            result++;
         }
-        if (n < 0) {
-            return 0;
-        }
-        int row = 0;
-        for (int i = 1; i < n; i++) {
-            if ((n = n - i) < 0) {
-                return row;
-            }
-            row++;
-        }
-        return row;
+        return result;
     }
 }
