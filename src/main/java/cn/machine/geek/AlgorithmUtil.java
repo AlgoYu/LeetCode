@@ -2,6 +2,7 @@ package cn.machine.geek;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @Author XiaoYu
@@ -16,6 +17,18 @@ public class AlgorithmUtil {
     private static final String LETTER = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String SIGN = "!\"#$%&‘()*+,-./:;<=>?@[\\]^_`{|}~";
     private static final String NUMBER = "0123456789";
+    private static final Random RANDOM = new Random();
+
+    /**
+     * 随机整数
+     *
+     * @param start 起始区间
+     * @param end   结束区间
+     * @return 整形
+     */
+    public static Integer randomInt(int start, int end) {
+        return RANDOM.nextInt(end - start) + start;
+    }
 
     public static String generateRandomLetterString(int length) {
         if (length == 0) {
