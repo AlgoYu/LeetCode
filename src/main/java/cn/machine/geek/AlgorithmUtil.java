@@ -30,6 +30,17 @@ public class AlgorithmUtil {
         return RANDOM.nextInt(end - start) + start;
     }
 
+    /**
+     * 随机负数
+     * @param start 起始区间
+     * @param end
+     * @param negative
+     * @return
+     */
+    public static Integer randomNegativeInt(int start, int end) {
+        return -randomInt(start, end);
+    }
+
     public static String generateRandomLetterString(int length) {
         if (length == 0) {
             return "";
@@ -126,6 +137,10 @@ public class AlgorithmUtil {
             result = -result;
         }
         return result;
+    }
+
+    public static void splitLine() {
+        System.out.println("-------------------------------");
     }
 
     public static int countSegments(String s) {
