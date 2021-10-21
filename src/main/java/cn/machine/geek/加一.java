@@ -26,18 +26,21 @@ package cn.machine.geek;
  */
 public class 加一 {
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >= 0; i--) {
-            if (digits[i] >= 9) {
-                digits[i] = 0;
-            } else {
-                digits[i] += 1;
-                break;
-            }
+        int index = digits.length - 1;
+        int pre = 1;
+        while (index >= 0) {
+            int n = digits[index] + pre;
+            digits[index] = n % 10;
+            pre = n / 10;
+            index--;
         }
-        if (digits[0] == 0) {
-            int[] result = new int[digits.length + 1];
-            result[0] = 1;
-            return result;
+        if (pre > 0) {
+            int[] newDigits = new int[digits.length + 1];
+            newDigits[0] = pre;
+            for (int i = 1; i < digits.length; i++) {
+                digits[i] = digits[i - 1];
+            }
+            return newDigits;
         }
         return digits;
     }
