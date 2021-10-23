@@ -32,7 +32,8 @@ public class AlgorithmUtil {
 
     /**
      * 随机负数
-     * @param start 起始区间
+     *
+     * @param start    起始区间
      * @param end
      * @param negative
      * @return
@@ -137,6 +138,14 @@ public class AlgorithmUtil {
             result = -result;
         }
         return result;
+    }
+
+    public static int[] generateRandomIntArray(int n) {
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = randomInt(0, 30);
+        }
+        return array;
     }
 
     public static void splitLine() {
