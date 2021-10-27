@@ -1,8 +1,5 @@
 package cn.machine.geek;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * 寻找重复数
  * 给定一个包含 n + 1 个整数的数组 nums ，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。
@@ -45,13 +42,17 @@ import java.util.Set;
  */
 public class 寻找重复数 {
     public int findDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (set.contains(nums[i])) {
-                return nums[i];
-            }
-            set.add(nums[i]);
+        int slow = 0;
+        int fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
         }
-        return -1;
+        return slow;
     }
 }
