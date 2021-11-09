@@ -4,65 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class 祖玛游戏 {
-    public static void main(String[] args) {
-        祖玛游戏 test = new 祖玛游戏();
-        System.out.println(test.findMinStep("RRWWRRW", "WR"));
+    int INF = 0x3f3f3f3f;
+    String hand;
+    int m;
+    Map<String, Integer> map = new HashMap<>();
+
+    public int findMinStep(String a, String hand) {
+        this.hand = hand;
+        m = this.hand.length();
+        int ans = dfs(a, 1 << m);
+        return ans == INF ? -1 : ans;
     }
 
-    int min = Integer.MAX_VALUE;
-
-    public int findMinStep(String board, String hand) {
-        Map<Character, Integer> hands = new HashMap<>();
-        for (int i = 0; i < hand.length(); i++) {
-            char ch = hand.charAt(i);
-            hands.put(ch, hands.getOrDefault(ch, 0) + 1);
-        }
-        backtrack(new StringBuilder(board), hands, hand.length(), 0);
-        return min == Integer.MAX_VALUE ? -1 : min;
-    }
-
-    private void backtrack(StringBuilder sb, Map<Character, Integer> hands, int n, int step) {
-        // 所有彩球清理完了
-        if (sb.length() == 0) {
-            min = Math.min(min, step);
-            return;
-        }
-        // 剪枝，手中球用完。
-        if (n == 0) {
-            return;
-        }
-        //
-        int index = 0;
-        while (index < sb.length()) {
-            StringBuilder backup = new StringBuilder(sb);
-            // 当前位置的彩球
-            char ch = backup.charAt(index);
-            Integer num = hands.getOrDefault(ch, 0);
-            if (num > 0) {
-                // 使用相同
-                backup.insert(index, ch);
-                hands.put(ch, num - 1);
-                backtrack(merge(backup), hands, n - 1, step + 1);
-                hands.put(ch, num);
-                // 剪枝，重复彩球
-                while (index + 1 < sb.length() && sb.charAt(index + 1) == ch) {
-                    index++;
-                }
-            } else {
-                // 全部尝试
-                for (Map.Entry<Character, Integer> hand : hands.entrySet()) {
-                    if (hand.getValue() <= 0) {
-                        continue;
-                    }
-                    StringBuilder temp = new StringBuilder(sb);
-                    temp.insert(index, hand.getKey());
-                    hand.setValue(hand.getValue() - 1);
-                    backtrack(merge(temp), hands, n - 1, step + 1);
-                    hand.setValue(hand.getValue() + 1);
-                }
+    int dfs(String a, int cur) {
+        if (a.length() == 0) return 0;
+        if (map.containsKey(a)) return map.get(a);
+        int ans = INF;
+        int n = a.length();
+        for (int i = 0; i < m; i++) {
+            if (((cur >> i) & 1) == 1) continue;
+            int next = (1 << i) | cur;
+            for (int j = 0; j <= n; j++) {
+                boolean ok = true;
+                if (j > 0 && j < n && a.charAt(j) == a.charAt(j - 1) && a.charAt(j - 1) != hand.charAt(i)) ok = false;
+                if (j < n && a.charAt(j) == hand.charAt(i)) ok = false;
+                if (ok) continue;
+                StringBuilder sb = new StringBuilder(a);
+                sb.insert(j, hand.charAt(i));
+                ans = Math.min(ans, dfs(merge(sb), next) + 1);
             }
-            index++;
         }
+        map.put(a, ans);
+        return ans;
     }
 
     /**
@@ -71,9 +44,9 @@ public class 祖玛游戏 {
      * @param board
      * @return
      */
-    private StringBuilder merge(StringBuilder board) {
+    private String merge(StringBuilder board) {
         if (board.length() < 3) {
-            return board;
+            return board.toString();
         }
         int n = board.length();
         boolean flag = false;
@@ -88,6 +61,6 @@ public class 祖玛游戏 {
                 break;
             }
         }
-        return flag ? merge(board) : board;
+        return flag ? merge(board) : board.toString();
     }
 }
