@@ -6,11 +6,6 @@ import java.util.List;
 
 public class 连接词 {
 
-    public static void main(String[] args) {
-        连接词 test = new 连接词();
-        test.findAllConcatenatedWordsInADict(new String[]{"cat", "dog", "catdog"});
-    }
-
     class Node {
         boolean end;
         String word;
