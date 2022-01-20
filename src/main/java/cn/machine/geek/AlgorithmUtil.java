@@ -140,10 +140,11 @@ public class AlgorithmUtil {
         return result;
     }
 
-    public static int[] generateRandomIntArray(int n) {
+    public static int[] generateRandomIntArray(int n, int max) {
         int[] array = new int[n];
+        max++;
         for (int i = 0; i < n; i++) {
-            array[i] = randomInt(0, 30);
+            array[i] = randomInt(1, max);
         }
         return array;
     }
