@@ -11,10 +11,7 @@ public class 最简分数 {
             }
         }
         List<String> result = new ArrayList<>(set.size());
-        Iterator<String> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            result.add(iterator.next());
-        }
+        result.addAll(set);
         return result;
     }
 
