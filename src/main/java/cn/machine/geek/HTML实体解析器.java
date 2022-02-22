@@ -41,9 +41,4 @@ public class HTML实体解析器 {
         }
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        HTML实体解析器 test = new HTML实体解析器();
-        test.entityParser("and I quote: &quot;...&quot;");
-    }
 }
