@@ -45,26 +45,29 @@ import java.util.List;
  */
 public class Z字形变换 {
     public String convert(String s, int numRows) {
-        if (s == null || s.length() == 0 || numRows == 1) return s;
-
-        List<StringBuilder> rows = new ArrayList<>();
-        int row = Math.min(s.length(), numRows);
-
-        for (int i = 0; i < row; i++) {
+        if (numRows <= 1) {
+            return s;
+        }
+        List<StringBuilder> rows = new ArrayList<>(numRows);
+        for (int i = 0; i < numRows; i++) {
             rows.add(new StringBuilder());
         }
-
-        char[] chars = s.toCharArray();
-        int i = 0;
-        int going = -1;
-        for (char ch : chars) {
-            rows.get(i).append(ch);
-            if (i == 0 || i == row - 1) going = -going;
-            i += going;
+        int n = s.length();
+        int row = 0;
+        int plus = -1;
+        int index = 0;
+        while (index < n) {
+            StringBuilder stringBuilder = rows.get(row);
+            stringBuilder.append(s.charAt(index));
+            if (row == 0 || row == numRows - 1) {
+                plus = -plus;
+            }
+            row += plus;
+            index++;
         }
         StringBuilder result = new StringBuilder();
-        for (StringBuilder builder : rows) {
-            result.append(builder);
+        for (int i = 0; i < numRows; i++) {
+            result.append(rows.get(i));
         }
         return result.toString();
     }
