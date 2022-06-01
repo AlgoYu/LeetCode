@@ -18,6 +18,15 @@ public class AlgorithmUtil {
     private static final String SIGN = "!\"#$%&‘()*+,-./:;<=>?@[\\]^_`{|}~";
     private static final String NUMBER = "0123456789";
     private static final Random RANDOM = new Random();
+    private static final ThreadLocal<Long> TIME_LOCAL = new ThreadLocal<>();
+
+    public static void timeStart() {
+        TIME_LOCAL.set(System.currentTimeMillis());
+    }
+
+    public static void timeEnd() {
+        System.out.println("耗时" + (System.currentTimeMillis() - TIME_LOCAL.get()) + "毫秒");
+    }
 
     /**
      * 随机整数
