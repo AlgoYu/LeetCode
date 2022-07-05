@@ -19,7 +19,7 @@ public class 我的日程安排表I {
         int[] tmp = {end, 0};
         int[] arr = treeSet.ceiling(tmp);
         int[] prev = arr == null ? treeSet.last() : treeSet.lower(arr);
-        if (arr == treeSet.first() || treeSet.lower(tmp)[1] <= start) {
+        if (arr == treeSet.first() || prev[1] <= start) {
             treeSet.add(new int[]{start, end});
             return true;
         }
