@@ -14,7 +14,7 @@ public class 最小绝对差 {
         }
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] - arr[i - 1] == min) {
-                result.add(List.of(arr[i - 1], arr[i]));
+                result.add(Arrays.asList(arr[i - 1], arr[i]));
             }
         }
         return result;
