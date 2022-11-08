@@ -22,14 +22,20 @@ package cn.machine.geek;
  */
 public class 种花问题 {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if (n == 0) {
+            return true;
+        }
         int flower = 0;
         for (int i = 0; i < flowerbed.length; i++) {
             if (flowerbed[i] == 0 && flowerbed[i - 1 >= 0 ? i - 1 : i] == 0 && flowerbed[i + 1 < flowerbed.length ? i + 1 : i] == 0) {
                 flowerbed[i] = 1;
                 flower++;
+                if (flower >= n) {
+                    return true;
+                }
             }
         }
-        return flower - n >= 0;
+        return false;
     }
     /**
      * 方法一：贪心
