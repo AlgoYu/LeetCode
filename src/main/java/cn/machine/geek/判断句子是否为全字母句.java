@@ -31,20 +31,15 @@ import java.util.Set;
  */
 public class 判断句子是否为全字母句 {
     public boolean checkIfPangram(String sentence) {
-        if (sentence == null || sentence.length() < 26) {
-            return false;
+        int[] count = new int[26];
+        for (int i = 0; i < sentence.length(); i++) {
+            count[sentence.charAt(i) - 'a']++;
         }
-        char[] chars = sentence.toCharArray();
-        Set<Character> set = new HashSet<>();
-        for (int i = 0; i < chars.length; i++) {
-            if (chars.length - i < 26 - set.size()) {
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] == 0) {
                 return false;
             }
-            char tmp = chars[i];
-            if (tmp >= 'a' && tmp <= 'z') {
-                set.add(tmp);
-            }
         }
-        return set.size() == 26;
+        return true;
     }
 }
