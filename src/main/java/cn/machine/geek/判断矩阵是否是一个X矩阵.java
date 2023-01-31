@@ -1,10 +1,6 @@
 package cn.machine.geek;
 
 public class 判断矩阵是否是一个X矩阵 {
-    public static void main(String[] args) {
-        判断矩阵是否是一个X矩阵 s = new 判断矩阵是否是一个X矩阵();
-        s.checkXMatrix(new int[][]{{2, 0, 0, 1}, {0, 3, 1, 0}, {0, 5, 2, 0}, {4, 0, 0, 2}});
-    }
 
     public boolean checkXMatrix(int[][] grid) {
         int n = grid.length;
