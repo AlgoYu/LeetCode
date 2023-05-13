@@ -1,6 +1,7 @@
 package xiaoyu.algo;
 
 import xiaoyu.algo.leetcode.删除字符使频率相同;
+import xiaoyu.algo.leetcode.距离相等的条形码;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -10,12 +11,11 @@ public class Main {
     public static void main(String[] args) {
         AlgorithmUtil.timeStart();
         execAlgorithm();
-        HashMap<String, String> hashMap = new HashMap<>();
         AlgorithmUtil.timeEnd();
     }
 
     private static void execAlgorithm() {
-        删除字符使频率相同 test = new 删除字符使频率相同();
-        test.equalFrequency("abcc");
+        距离相等的条形码 test = new 距离相等的条形码();
+        test.rearrangeBarcodes(new int[]{7, 7, 7, 8, 5, 7, 5, 5, 5, 8});
     }
 }
