@@ -10,7 +10,7 @@ public class 二叉树的锯齿形层序遍历 {
         boolean way = true;
         while (!queue.isEmpty()) {
             int n = queue.size();
-            List<Integer> tempList = new ArrayList<>();
+            List<Integer> tempList = new LinkedList<>();
             for (int i = 0; i < n; i++) {
                 TreeNode curNode = queue.poll();
                 if (curNode != null) {
