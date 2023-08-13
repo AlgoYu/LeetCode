@@ -1,35 +1,29 @@
 package xiaoyu.algo.leetcode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class 组合总和III {
-
-    boolean[] data;
+    List<List<Integer>> result = new LinkedList<>();
+    LinkedList<Integer> list = new LinkedList<>();
 
     public List<List<Integer>> combinationSum3(int k, int n) {
-        List<List<Integer>> result = new ArrayList<>();
-        data = new boolean[9];
-        backtrack(result, 1, 9, k, n, new ArrayList<>(k));
+        backtrack(k, n, 1, 0);
         return result;
     }
 
-    private void backtrack(List<List<Integer>> result, int cur, int max, int k, int n, ArrayList<Integer> list) {
-        if (list.size() + (max - cur + 1) < k || list.size() > k) {
+    private void backtrack(int k, int n, int num, int total) {
+        if (list.size() > k || total > n || list.size() + (9 - num + 1) < k) {
             return;
         }
-        if (list.size() == k) {
-            if (n != 0) {
-                return;
-            }
-            result.add(new ArrayList<>(list));
+        if (total == n && list.size() == k) {
+            result.add(new LinkedList<>(list));
             return;
         }
-        if (n >= cur) {
-            list.add(cur);
-            backtrack(result, cur + 1, max, k, n - cur, list);
-            list.remove(list.size() - 1);
-        }
-        backtrack(result, cur + 1, max, k, n, list);
+        list.add(num);
+        backtrack(k, n, num + 1, total + num);
+        list.removeLast();
+        backtrack(k, n, num + 1, total);
     }
 }
