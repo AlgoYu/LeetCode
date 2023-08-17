@@ -28,13 +28,13 @@ public class 删除排序链表中的重复元素II {
                 while (node != null && node.val == val) {
                     node = node.next;
                 }
+                cur.next = node;
             } else {
                 cur.next = node;
                 cur = cur.next;
                 node = node.next;
             }
         }
-        cur.next = null;
         return virtual.next;
     }
 }
