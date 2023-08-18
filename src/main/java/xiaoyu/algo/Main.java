@@ -1,6 +1,7 @@
 package xiaoyu.algo;
 
 import xiaoyu.algo.leetcode.删除字符使频率相同;
+import xiaoyu.algo.leetcode.排序数组;
 import xiaoyu.algo.leetcode.矩阵对角线元素的和;
 import xiaoyu.algo.leetcode.距离相等的条形码;
 
@@ -16,7 +17,7 @@ public class Main {
     }
 
     private static void execAlgorithm() {
-        矩阵对角线元素的和 test = new 矩阵对角线元素的和();
-        test.diagonalSum(new int[][]{{7, 3, 1, 9}, {3, 4, 6, 9}, {6, 9, 6, 6}, {9, 5, 8, 5}});
+        排序数组 test = new 排序数组();
+        test.sortArray(new int[]{-1, 2, -8, -10});
     }
 }
