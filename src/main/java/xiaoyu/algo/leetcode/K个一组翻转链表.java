@@ -58,47 +58,39 @@ public class K个一组翻转链表 {
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode newHead = new ListNode();
-        newHead.next = head;
-        ListNode tail = newHead;
-        ListNode slow = newHead.next;
-        ListNode fast = newHead.next;
-        while (slow != null) {
-            int count = k - 1;
-            while (count > 0 && fast.next != null) {
-                fast = fast.next;
-                count--;
+        ListNode virtual = new ListNode();
+        ListNode pre = virtual;
+        virtual.next = head;
+        while (pre.next != null) {
+            ListNode cur = pre.next;
+            for (int i = 1; i < k; i++) {
+                cur = cur.next;
+                if (cur == null) {
+                    return virtual.next;
+                }
             }
-            if (count != 0) {
-                return newHead.next;
-            }
-            tail.next = null;
-            ListNode next = fast.next;
-            fast.next = null;
-            reverse(slow);
-            tail.next = fast;
-            slow.next = next;
-            tail = slow;
-            slow = next;
-            fast = next;
+            // 后面的链表
+            ListNode tail = cur.next;
+            cur.next = null;
+            // 断点头
+            ListNode first = pre.next;
+            pre.next = null;
+            reverse(first);
+            // 续上
+            pre.next = cur;
+            first.next = tail;
+            pre = first;
         }
-        return newHead.next;
+        return virtual.next;
     }
 
     private void reverse(ListNode head) {
-        if (head == null) {
-            return;
-        }
         ListNode pre = null;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode next = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = next;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
     }
 }
