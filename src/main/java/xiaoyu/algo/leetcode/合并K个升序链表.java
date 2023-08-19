@@ -19,36 +19,27 @@ public class 合并K个升序链表 {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode result = new ListNode();
-        ListNode cur = result;
+        ListNode virtual = new ListNode();
+        ListNode cur = virtual;
         for (; ; ) {
             ListNode min = null;
-            int swapIndex = 0;
+            int index = -1;
             for (int i = 0; i < lists.length; i++) {
-                ListNode node = lists[i];
-                if (node != null) {
-                    min = compareNode(min, node);
-                    if (min == node) {
-                        swapIndex = i;
+                if (lists[i] != null) {
+                    if (min == null || min.val > lists[i].val) {
+                        min = lists[i];
+                        index = i;
                     }
                 }
             }
-            if (min == null) {
-                return result.next;
+            if (index == -1) {
+                break;
             }
             cur.next = min;
             cur = cur.next;
-            lists[swapIndex] = lists[swapIndex].next;
+            lists[index] = lists[index].next;
+            min = null;
         }
-    }
-
-    private ListNode compareNode(ListNode node1, ListNode node2) {
-        if (node1 == null) {
-            return node2;
-        }
-        if (node2 == null) {
-            return node1;
-        }
-        return node1.val > node2.val ? node2 : node1;
+        return virtual.next;
     }
 }
