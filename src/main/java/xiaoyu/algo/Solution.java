@@ -1,6 +1,6 @@
-package xiaoyu.algo.leetcode;
+package xiaoyu.algo;
 
-public class 搜索旋转排序数组 {
+public class Solution {
     public int search(int[] nums, int target) {
         int n = nums.length;
         if (n == 0) {

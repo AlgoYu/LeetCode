@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static void execAlgorithm() {
-        排序数组 test = new 排序数组();
-        test.sortArray(new int[]{-1, 2, -8, -10});
+        Solution test = new Solution();
+//        test.sortArray(new int[]{-1, 2, -8, -10});
     }
 }
