@@ -1,34 +1,35 @@
 package xiaoyu.algo;
 
-public class Solution {
-    public int search(int[] nums, int target) {
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new LinkedList<>();
         int n = nums.length;
-        if (n == 0) {
-            return -1;
-        }
-        if (n == 1) {
-            return target == nums[0] ? 0 : -1;
-        }
-        int l = 0, r = n - 1;
-        while (l <= r) {
-            int mid = l + (r - l) / 2;
-            if (nums[mid] == target) {
-                return mid;
+        Arrays.sort(nums);
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
             }
-            if (nums[mid] >= nums[0]) {
-                if (nums[0] <= target && target < nums[mid]) {
-                    r = mid - 1;
-                } else {
-                    l = mid + 1;
+            int l = i + 1, r = n - 1;
+            while (l < r) {
+                if (l > i + 1 && nums[l] == nums[l - 1]) {
+                    l++;
+                    continue;
                 }
-            } else {
-                if (nums[n - 1] >= target && target > nums[mid]) {
-                    l = mid + 1;
+                int value = nums[i] + nums[l] + nums[r];
+                if (value > 0) {
+                    r--;
+                } else if (value < 0) {
+                    l++;
                 } else {
-                    r = mid - 1;
+                    result.add(List.of(nums[i], nums[l], nums[r]));
+                    l++;
                 }
             }
         }
-        return -1;
+        return result;
     }
 }
