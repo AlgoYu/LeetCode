@@ -10,6 +10,8 @@ import java.lang.management.ThreadMXBean;
 import java.util.HashMap;
 
 public class Main {
+    int[] arraysData = new int[]{1, 2, 3, 4};
+
     public static void main(String[] args) {
         AlgorithmUtil.timeStart();
         execAlgorithm();
@@ -18,6 +20,6 @@ public class Main {
 
     private static void execAlgorithm() {
         Solution test = new Solution();
-        test.exchange(new int[]{1, 2, 3, 4});
+        test.isPalindrome("0P");
     }
 }
