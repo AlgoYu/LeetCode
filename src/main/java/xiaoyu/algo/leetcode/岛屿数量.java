@@ -4,46 +4,30 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class 岛屿数量 {
-    private int count;
-    private static int N;
+    int count = 0;
 
     public int numIslands(char[][] grid) {
-        N = grid[0].length;
         for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == '0') {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '0' || grid[i][j] == '.') {
                     continue;
+
                 }
                 bfs(grid, i, j);
+                count++;
             }
         }
         return count;
     }
 
-    private void bfs(char[][] grid, int row, int col) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(row * N + col);
-        while (!queue.isEmpty()) {
-            Integer num = queue.poll();
-            int tRow = num / N;
-            int tCol = num % N;
-            if (tRow > 0 && grid[tRow - 1][tCol] == '1') {
-                queue.add((tRow - 1) * N + tCol);
-                grid[tRow - 1][tCol] = '0';
-            }
-            if (tRow + 1 < grid.length && grid[tRow + 1][tCol] == '1') {
-                queue.add((tRow + 1) * N + tCol);
-                grid[tRow + 1][tCol] = '0';
-            }
-            if (tCol > 0 && grid[tRow][tCol - 1] == '1') {
-                queue.add(tRow * N + (tCol - 1));
-                grid[tRow][tCol - 1] = '0';
-            }
-            if (tCol + 1 < grid[0].length && grid[tRow][tCol + 1] == '1') {
-                queue.add(tRow * N + (tCol + 1));
-                grid[tRow][tCol + 1] = '0';
-            }
+    private void bfs(char[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') {
+            return;
         }
-        count++;
+        grid[i][j] = '.';
+        bfs(grid, i - 1, j);
+        bfs(grid, i + 1, j);
+        bfs(grid, i, j - 1);
+        bfs(grid, i, j + 1);
     }
 }
