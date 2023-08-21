@@ -26,7 +26,7 @@ public class 三数之和 {
                 } else if (value < 0) {
                     l++;
                 } else {
-                    result.add(List.of(nums[i], nums[l], nums[r]));
+                    result.add(Arrays.asList(nums[i], nums[l], nums[r]));
                     l++;
                 }
             }

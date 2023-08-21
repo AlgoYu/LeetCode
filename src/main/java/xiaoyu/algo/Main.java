@@ -18,6 +18,6 @@ public class Main {
 
     private static void execAlgorithm() {
         Solution test = new Solution();
-//        test.sortArray(new int[]{-1, 2, -8, -10});
+        test.exchange(new int[]{1, 2, 3, 4});
     }
 }
