@@ -20,6 +20,6 @@ public class Main {
 
     private static void execAlgorithm() {
         Solution test = new Solution();
-        test.isPalindrome("0P");
+        test.calculate(" 3/2 ");
     }
 }
