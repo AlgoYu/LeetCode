@@ -5,12 +5,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * @Author XiaoYu
- * @Description TODO
- * @Date 2021/10/6 8:27 下午
- * @Email 794763733@qq.com
- */
 public class 合并区间 {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, new Comparator<int[]>() {
@@ -19,20 +13,19 @@ public class 合并区间 {
                 return o1[0] - o2[0];
             }
         });
-        int n = intervals.length;
+        List<int[]> list = new ArrayList<>();
         int index = 0;
-        List<int[]> result = new ArrayList<>();
-        while (index < n) {
-            int[] ints = intervals[index];
-            int left = ints[0];
-            int right = ints[1];
-            if (result.size() == 0 || result.get(result.size() - 1)[1] < left) {
-                result.add(new int[]{left, right});
-                continue;
+        while (index < intervals.length) {
+            int[] temp = new int[2];
+            temp[0] = intervals[index][0];
+            temp[1] = intervals[index][1];
+            if (list.isEmpty() || temp[0] > list.get(list.size() - 1)[1]) {
+                list.add(temp);
+            } else {
+                list.get(list.size() - 1)[1] = Math.max(temp[1], list.get(list.size() - 1)[1]);
             }
-            result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], right);
             index++;
         }
-        return result.toArray(new int[result.size()][]);
+        return list.toArray(new int[list.size()][]);
     }
 }
