@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 class Solution {
+
     public int calculate(String s) {
         int index = 0, result = 0;
         Stack<Integer> stack = new Stack<>();
