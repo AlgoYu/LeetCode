@@ -1,11 +1,6 @@
-package xiaoyu.algo;
+package xiaoyu.algo.leetcode;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
-
-class Solution {
+public class 解数独 {
     public void solveSudoku(char[][] board) {
         backtrack(board, 0, 0);
     }
