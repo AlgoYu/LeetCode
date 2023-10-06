@@ -8,13 +8,13 @@ public class 股票价格跨度 {
 
     public 股票价格跨度() {
         stack = new Stack<>();
-        stack.push(new int[]{Integer.MAX_VALUE, -1});
-        index = -1;
+        stack.push(new int[]{Integer.MAX_VALUE, 0});
+        index = 0;
     }
 
     public int next(int price) {
         index++;
-        while (stack.peek()[0] <= price) {
+        while (!stack.isEmpty() && stack.peek()[0] <= price) {
             stack.pop();
         }
         int result = index - stack.peek()[1];
